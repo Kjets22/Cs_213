@@ -15,7 +15,7 @@ public class admin {
   
   void delete_user(String username){
     for (user user : users){
-      if(username.equals(user.getusername())){
+      if(username.equals(user.get_username())){
         users.remove(user);
       }
     }  
@@ -23,7 +23,7 @@ public class admin {
   
   void list_users(){
     for (user user : users){
-      System.out.print(user.getusername()+"  ");
+      System.out.print(user.get_username()+"  ");
     }
   }
 	

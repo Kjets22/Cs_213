@@ -8,7 +8,7 @@ public class main {
     System.out.println("inside photo directory in the main the java file");
     String input=get_user_input("what is the username");
     if (input.equals("admin")){
-      
+      System.out.println("hi");      
     }
   }
   static String get_user_input(String output){
