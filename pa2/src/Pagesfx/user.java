@@ -1,3 +1,4 @@
+package Pagesfx;
 import java.util.ArrayList;
 import java.util.List;
 /**
@@ -29,9 +30,9 @@ public class user {
     }  
   }
   
-  void list_users(){
+  /*void list_users(){
     for (album album: albums){
       System.out.print(user.get_name()+"  ");
     }
-  }
+  }*/
 }
