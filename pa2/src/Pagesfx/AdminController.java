@@ -21,7 +21,7 @@ import javafx.scene.control.TextField;
 
 public class AdminController {
     @FXML Button createUser, deleteUser, logout, quit;
-    @FXML TextField createField, deleteField;
+    @FXML TextField createField;
     @FXML ListView <String> userList;
 
 
@@ -30,8 +30,9 @@ public class AdminController {
     List<String> people = new ArrayList<String>();
 
 
-    public static List<User> getUsers(){
-        return users;
+    public static List<User> getUsers() throws FileNotFoundException, ClassNotFoundException, IOException{
+        List<User> peep = readUserList();
+        return peep;
     }
 
     public static void addUser(String name) throws FileNotFoundException, IOException{
@@ -42,16 +43,20 @@ public class AdminController {
     
 
     public void CreateUser(ActionEvent event) throws IOException, ClassNotFoundException{
-        if (searchUsers(createField.getText().trim()) == 1){
+        if (searchUsers(createField.getText().trim()) == -1){
             addUser(createField.getText().trim());
             people.add(createField.getText().trim());
+            createField.clear();
             update();
         }
         
     }
 
-    public void DeleteUser(ActionEvent event){
-
+    public void DeleteUser(ActionEvent event) throws ClassNotFoundException, IOException{
+        int index = searchUsers(userList.getSelectionModel().getSelectedItem());
+				users.remove(index);
+                people.remove(index);
+				update();
     }
 
     public void start() throws IOException, ClassNotFoundException{
@@ -75,10 +80,10 @@ public class AdminController {
     public int searchUsers(String name){
         for(int i = 0; i < users.size(); i++){
             if(users.get(i).getUsername().equals(name)){
-                return -1;
+                return i;
             }
         }
-        return 1;
+        return -1;
     }
 
     public void Back(){
@@ -104,9 +109,6 @@ public class AdminController {
         List <User> deserialized = new ArrayList<User>();
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("file.ser"))) {
           deserialized = (List<User>) ois.readObject();
-          for(int i=0; i<users.size(); i++){
-            System.out.println(deserialized.get(i).getUsername());
-        }
           return deserialized;
         }
       }

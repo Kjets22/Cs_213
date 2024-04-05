@@ -2,8 +2,8 @@ package Pagesfx;
 
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.layout.AnchorPane;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -13,8 +13,8 @@ public class Main extends Application {
 
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("Username Page.fxml"));
-        Parent root = loader.load();
-        Scene opening = new Scene(root, 400, 300);
+        AnchorPane root = (AnchorPane) loader.load();
+        Scene opening = new Scene(root, 600,400);
         primaryStage.setScene(opening);
         primaryStage.show();
     }
