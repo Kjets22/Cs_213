@@ -37,4 +37,12 @@ public class album {
   void caption_photo(int photo_Id,String caption){
     findphoto_action(photo_Id,photo->photo.change_capation(caption)); 
   }  
+
+  void add_tag(int photo_Id,String name,String value){
+    findphoto_action(photo_Id,photo->photo.add_tag(name,value));
+  }
+
+  void delete_tag(int photo_Id,String name, String value){
+    findphoto_action(photo_Id,photo->photo.delete_tag(name,value));
+  }
 }

@@ -34,5 +34,16 @@ public class photo{
        this.caption=caption; 
    }
 
+    public void add_tag(String name,String value){
+        tags.add(new tag(name,value ));
+    } 
+
+    public void delete_tag(String value, String name){
+        for (tag tag : tags){
+            if(value == tag.getName() && name == tag.getValue()){
+                tags.remove(tag);
+            }
+        }
+    }
 
 }

@@ -10,7 +10,14 @@ public class user {
     this.username=username;
   }
 
-
+  album find_album(String name){
+    for(album album : albums){
+      if (album.get_name() == name){
+        return album;
+      }
+    }
+      return albums.get(1);
+  }
 
   String get_username(){
     return username;
@@ -31,7 +38,12 @@ public class user {
   
   void list_users(){
     for (album album: albums){
-      System.out.print(user.get_name()+"  ");
+      //System.out.print(()+"  ");
     }
+  }
+
+  void copy_photo_to_ablbum(photo photo,String name){
+    album album = find_album( name);
+    //album.add(photo);
   }
 }
