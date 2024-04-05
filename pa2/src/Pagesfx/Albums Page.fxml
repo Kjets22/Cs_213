@@ -15,7 +15,8 @@
             <Font size="20.0" />
          </font>
       </Label>
-      <Button fx:id="quit" layoutX="547.0" layoutY="14.0" mnemonicParsing="false" onAction="#QuitApp" text="Quit" />
-      <Button fx:id="createAlbum" layoutX="111.0" layoutY="100.0" mnemonicParsing="false" onAction="#CreateAlbum" text="Create Album" />
+      <Button fx:id="quit" layoutX="547.0" layoutY="14.0" mnemonicParsing="false" text="Quit" />
+      <Button fx:id="createAlbum" layoutX="111.0" layoutY="100.0" mnemonicParsing="false" text="Create Album" />
+      <Button fx:id="logout" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Logout" text="Logout" />
    </children>
 </Pane>

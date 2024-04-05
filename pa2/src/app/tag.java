@@ -1,5 +1,8 @@
-package Pagesfx;
-public class tag{
+package app;
+
+import java.io.Serializable;
+
+public class tag implements Serializable{
     
     String name, value;
     public tag(String name, String value){

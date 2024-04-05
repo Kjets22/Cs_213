@@ -32,7 +32,7 @@ public class albumsController {
 
 
     @FXML
-    Button quit, createAlbum;
+    Button quit, createAlbum, logout;
     @FXML 
     ListView <String> list = new ListView<>();
     

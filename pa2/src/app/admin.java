@@ -1,4 +1,4 @@
-package Pagesfx;
+package app;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -8,11 +8,11 @@ import java.util.List;
  * admin
  */
 public class admin {
-  private List<user> users=new ArrayList();
+  private List<User> users=new ArrayList();
 
 
-  user get_user(String username){
-    for (user user : users){
+  User get_user(String username){
+    for (User user : users){
       if(username.equals(user.get_username())){
         return user;
       }
@@ -21,11 +21,11 @@ public class admin {
   }
 
   void add_user(String username){
-    users.add(new user(username));
+    users.add(new User(username));
   }
   
   void delete_user(String username){
-     for (user user : users){
+     for (User user : users){
       if(username.equals(user.get_username())){
         users.remove(user);
       }
@@ -33,7 +33,7 @@ public class admin {
   }
   
   void list_users(){
-    for (user user : users){
+    for (User user : users){
       System.out.print(user.get_username()+"  ");
     }
   }

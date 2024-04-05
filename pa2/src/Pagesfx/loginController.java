@@ -1,7 +1,12 @@
 package Pagesfx;
 
+import java.io.FileNotFoundException;
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 
+import app.User;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -17,23 +22,35 @@ public class loginController {
 
     @FXML Button quit;
     @FXML TextField username;
+
     
 
 
-
-    public void Login(ActionEvent event) throws IOException{
-        /*FXMLLoader loader = new FXMLLoader();
+    public void Login(ActionEvent event) throws IOException, ClassNotFoundException{
+        if(username.getText().equals("Admin")){
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("Admin.fxml"));
+            Parent root = loader.load();
+            Stage window = (Stage) username.getScene().getWindow();
+            window.setScene(new Scene(root, 750, 500));
+            AdminController Controller = loader.getController();
+            Controller.start();
+        }
+        else{
+        FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("Albums Page.fxml"));
         Parent root = loader.load();
-        Stage window = (Stage) enter.getScene().getWindow();
+        Stage window = (Stage) username.getScene().getWindow();
         window.setScene(new Scene(root, 750, 500));
         albumsController Controller = loader.getController();
-        Controller.start();*/
-
+        Controller.start();
+        }
     }
 
-    public void QuitApp(){
-
+    public void Quit(ActionEvent event) {
+        Platform.exit();
     }
+
+    
 
 }

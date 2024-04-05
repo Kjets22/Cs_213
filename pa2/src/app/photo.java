@@ -1,8 +1,9 @@
-package Pagesfx;
+package app;
 import java.util.Calendar;
 import java.util.List;
+import java.io.Serializable;
 
-public class photo{
+public class photo implements Serializable{
 
     String location;
     Calendar date;
