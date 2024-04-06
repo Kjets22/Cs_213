@@ -9,7 +9,7 @@ public class user {
   user (String username){
     this.username=username;
   }
-
+  user (){}
   album find_album(String name){
     for(album album : albums){
       if (album.get_name() == name){
@@ -42,8 +42,9 @@ public class user {
     }
   }
 
-  void copy_photo_to_ablbum(photo photo,String name){
-    album album = find_album( name);
-    //album.add(photo);
+  void copy_photo_to_ablbum(photo photo,String album_name){
+    album album = find_album(album_name);
+    album.add_photo(photo);
   }
+  
 }

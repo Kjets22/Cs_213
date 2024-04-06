@@ -5,7 +5,7 @@ import java.util.function.Consumer;
 /**
  * album
  */
-public class album {
+public class album extends user {
   private List<photo> photos = new ArrayList();
   String name;
   int photo_number=0;
@@ -21,6 +21,9 @@ public class album {
   void add_photo(String location, Calendar date, List<tag> tags){
     photos.add(new photo(location,date,tags,photo_number));
     photo_number++;
+  }
+  void add_photo(photo photo){
+    photos.add(photo);//jave might not have pointers but i am pretty sure this should work
   }
 
   void remove_photo(int photo_Id){
@@ -45,4 +48,35 @@ public class album {
   void delete_tag(int photo_Id,String name, String value){
     findphoto_action(photo_Id,photo->photo.delete_tag(name,value));
   }
+
+  void copy_photo_to_album(int photo_Id, String album_name){
+    findphoto_action(photo_Id,photo-> super.copy_photo_to_ablbum(photo,album_name) );
+  }
+
+  void replace_photo_to_album(int photo_Id, String album_name){
+    findphoto_action(photo_Id,photo-> {
+      super.copy_photo_to_ablbum(photo,album_name );
+      photos.remove(photo);
+    });
+  }
+
+  photo backward(photo photo){
+    for(int i=0;i<photos.size();i++){
+      if (photo == photos.get(i)){
+        return photos.get(i++);
+      }
+    }
+    return null;
+  }
+  
+  photo forward(photo photo){
+    for(int i=0;i<photos.size();i++){
+      if (photo == photos.get(i)){
+        return photos.get(i++);
+      }
+    }
+    return null;
+  }
+
+  
 }
