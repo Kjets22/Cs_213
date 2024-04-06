@@ -51,6 +51,8 @@ public class albumsController {
    
 
     public void Logout(ActionEvent event) throws IOException{
+        writeUserList(users);
+        albums.clear();
         Parent root = FXMLLoader.load(getClass().getResource("Username Page.fxml"));
 
         Stage window = (Stage) quit.getScene().getWindow();
@@ -60,12 +62,17 @@ public class albumsController {
 
    public void Quit(ActionEvent event) throws FileNotFoundException, IOException{
         writeUserList(users);
+        albums.clear();
         Platform.exit();
    }
 
    public void makeAlbum(ActionEvent event) throws ClassNotFoundException, IOException {
     if (searchAlbums(newAlbum.getText().trim()) == -1){
-        users.get(0).add_album(newAlbum.getText().trim());
+        for(int i = 0; i < users.size(); i++){
+        if(users.get(i).getUsername().equals(currentUser.getUsername())){
+            users.get(i).add_album(newAlbum.getText().trim());
+        }
+        }
         albums.add(newAlbum.getText().trim());
         newAlbum.clear();
         update();
