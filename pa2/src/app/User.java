@@ -8,7 +8,7 @@ import java.util.List;
 public class User implements Serializable{
   public String username;
 
-  public List<Album> albums=new ArrayList<>();
+  public List<Album> albums = new ArrayList<>();
   private static final long serialVersionUID = 1L;
 
   public User (String username){
@@ -21,14 +21,18 @@ public class User implements Serializable{
     return username;
   }
 
+  public List<Album> getAlbums(){
+    return albums;
+  }
+  
 	
-  void add_album(String name){
+  public void add_album(String name){
     albums.add(new Album(name));
   }
   
   void delete_album(String name){
     for (Album album: albums){
-      if(name.equals(album.get_name())){
+      if(name.equals(album.getName())){
         albums.remove(album);
       }
     }  

@@ -28,9 +28,9 @@ public class loginController {
     @FXML TextField username;
 
     List <User> users = new ArrayList<User>();
-    
-    
 
+    public static User currentUser;
+    
 
     public void Login(ActionEvent event) throws IOException, ClassNotFoundException{
         if(username.getText().equals("Admin")){
@@ -48,9 +48,10 @@ public class loginController {
         for (int i = 0; i < users.size(); i++){
             if(username.getText().trim().equals(users.get(i).getUsername())){
                 k++;
+                currentUser = users.get(i);
             }
         }
-        if(k >0){
+        if(k > 0){
         FXMLLoader loader = new FXMLLoader();
         loader.setLocation(getClass().getResource("Albums Page.fxml"));
         Parent root = loader.load();
@@ -59,7 +60,6 @@ public class loginController {
         albumsController Controller = loader.getController();
         Controller.start();
         }
-
         else{
             Alert alert = new Alert(AlertType.ERROR);
 			alert.setHeaderText("Error");
@@ -75,12 +75,21 @@ public class loginController {
         Platform.exit();
     }
 
+    @SuppressWarnings("unchecked")
     public static List<User> readUserList() throws FileNotFoundException, IOException, ClassNotFoundException{
         List <User> deserialized = new ArrayList<User>();
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("file.ser"))) {
           deserialized = (List<User>) ois.readObject();
           return deserialized;
         }
+      }
+
+      public static User getCurrentUser(){
+        return currentUser;
+      }
+
+      public static String getCurrentUsername(){
+        return currentUser.getUsername();
       }
 
     

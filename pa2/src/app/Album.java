@@ -12,7 +12,7 @@ public class Album implements Serializable {
     this.name=name;
   
   }
-  String get_name(){
+  public String getName(){
     return name;
   }
  	
