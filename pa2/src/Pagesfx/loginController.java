@@ -7,7 +7,7 @@ import java.io.ObjectInputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.User;
+import app.user;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -27,9 +27,9 @@ public class loginController {
     @FXML Button quit;
     @FXML TextField username;
 
-    List <User> users = new ArrayList<User>();
+    List <user> users = new ArrayList<user>();
 
-    public static User currentUser;
+    public static user currentUser;
     
 
     public void Login(ActionEvent event) throws IOException, ClassNotFoundException{
@@ -46,7 +46,7 @@ public class loginController {
             int k = 0;
             users = readUserList();
         for (int i = 0; i < users.size(); i++){
-            if(username.getText().trim().equals(users.get(i).getUsername())){
+            if(username.getText().trim().equals(users.get(i).get_username())){
                 k++;
                 currentUser = users.get(i);
             }
@@ -76,20 +76,20 @@ public class loginController {
     }
 
     @SuppressWarnings("unchecked")
-    public static List<User> readUserList() throws FileNotFoundException, IOException, ClassNotFoundException{
-        List <User> deserialized = new ArrayList<User>();
+    public static List<user> readUserList() throws FileNotFoundException, IOException, ClassNotFoundException{
+        List <user> deserialized = new ArrayList<user>();
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("file.ser"))) {
-          deserialized = (List<User>) ois.readObject();
+          deserialized = (List<user>) ois.readObject();
           return deserialized;
         }
       }
 
-      public static User getCurrentUser(){
+      public static user getCurrentUser(){
         return currentUser;
       }
 
       public static String getCurrentUsername(){
-        return currentUser.getUsername();
+        return currentUser.get_username();
       }
 
     

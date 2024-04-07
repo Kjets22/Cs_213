@@ -9,7 +9,6 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Pagesfx.albumsController">
    <children>
-      <ListView fx:id="list" layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
       <Label fx:id="username" layoutX="272.0" layoutY="72.0" text="Username " />
       <Label layoutX="267.0" layoutY="25.0" text="Albums">
          <font>
@@ -20,5 +19,8 @@
       <Button fx:id="createAlbum" layoutX="75.0" layoutY="100.0" mnemonicParsing="false" onAction="#makeAlbum" text="Create Album" />
       <Button fx:id="logout" layoutX="14.0" layoutY="14.0" mnemonicParsing="false" onAction="#Logout" text="Logout" />
       <TextField fx:id="newAlbum" layoutX="45.0" layoutY="125.0" />
+      <Button fx:id="delete" layoutX="464.0" layoutY="100.0" mnemonicParsing="false" onAction="#deleteAlbum" text="Delete" />
+      <Button fx:id="open" layoutX="447.0" layoutY="168.0" mnemonicParsing="false" onAction="#openAlbum" text="Open Album" />
+      <ListView fx:id="list" layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
    </children>
 </Pane>

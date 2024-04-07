@@ -5,13 +5,17 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.layout.Pane?>
 
-
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1">
+<Pane fx:id="remove" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Pagesfx.PhotosController">
    <children>
-      <ListView layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
-      <Label layoutX="282.0" layoutY="14.0" text="Photos" />
-      <Button layoutX="118.0" layoutY="100.0" mnemonicParsing="false" text="Add" />
-      <Button layoutX="476.0" layoutY="100.0" mnemonicParsing="false" text="Remove" />
-      <Button layoutX="450.0" layoutY="200.0" mnemonicParsing="false" text="Rename" />
+      <ListView fx:id="photos" layoutX="153.0" layoutY="80.0" prefHeight="309.0" prefWidth="284.0" />
+      <Label layoutX="276.0" layoutY="51.0" text="Photos" />
+      <Button fx:id="add" layoutX="98.0" layoutY="80.0" mnemonicParsing="false" onAction="#add_photo" text="Add" />
+      <Button fx:id="rid" layoutX="450.0" layoutY="80.0" mnemonicParsing="false" text="Remove" />
+      <Button fx:id="rename" layoutX="450.0" layoutY="112.0" mnemonicParsing="false" text="Rename" />
+      <Label fx:id="albumName" layoutX="281.0" layoutY="14.0" text="Label" />
+      <Button fx:id="logout" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onAction="#Logout" text="Logout" />
+      <Button fx:id="quit" layoutX="547.0" layoutY="10.0" mnemonicParsing="false" onAction="#Quit" text="Quit" />
+      <Button fx:id="back" layoutX="14.0" layoutY="47.0" mnemonicParsing="false" onAction="#Back" text="Back" />
+      <Button layoutX="86.0" layoutY="112.0" mnemonicParsing="false" text="Add Tag" />
    </children>
 </Pane>

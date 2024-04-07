@@ -9,7 +9,7 @@ import java.io.ObjectOutputStream;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.User;
+import app.user;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -28,20 +28,20 @@ public class AdminController {
     @FXML TextField createField;
     @FXML ListView <String> userList;
 
-    public static List <User> users = new ArrayList<User>();
+    public static List <user> users = new ArrayList<user>();
 
     List<String> people = new ArrayList<String>();
 
 
 
 
-    public static List<User> getUsers() throws FileNotFoundException, ClassNotFoundException, IOException{
-        List<User> peep = readUserList();
+    public static List<user> getUsers() throws FileNotFoundException, ClassNotFoundException, IOException{
+        List<user> peep = readUserList();
         return peep;
     }
 
     public static void addUser(String name) throws FileNotFoundException, IOException{
-        users.add(new User (name));
+        users.add(new user (name));
     }
     
     
@@ -68,7 +68,7 @@ public class AdminController {
         users = readUserList();
         if(users != null){
         for(int i=0; i<users.size(); i++){
-            people.add(users.get(i).getUsername());
+            people.add(users.get(i).get_username());
         }
         }
         ObservableList <String> usersList = FXCollections.observableArrayList(people);
@@ -83,7 +83,7 @@ public class AdminController {
 
     public int searchUsers(String name){
         for(int i = 0; i < users.size(); i++){
-            if(users.get(i).getUsername().equals(name)){
+            if(users.get(i).get_username().equals(name)){
                 return i;
             }
         }
@@ -92,6 +92,7 @@ public class AdminController {
 
     public void Logout(ActionEvent event) throws IOException{
         Parent root = FXMLLoader.load(getClass().getResource("Username Page.fxml"));
+        writeUserList(users);
 
         Stage window = (Stage) quit.getScene().getWindow();
         window.setScene(new Scene(root, 600, 400));
@@ -103,7 +104,7 @@ public class AdminController {
     }
 
 
-    public static void writeUserList(List <User> guys) throws FileNotFoundException, IOException{
+    public static void writeUserList(List <user> guys) throws FileNotFoundException, IOException{
         try (ObjectOutputStream oos = new ObjectOutputStream(new FileOutputStream("file.ser"))) {
           oos.writeObject(guys);
          oos.close();
@@ -112,10 +113,10 @@ public class AdminController {
       }
 
       @SuppressWarnings("unchecked")
-    public static List<User> readUserList() throws FileNotFoundException, IOException, ClassNotFoundException{
-        List <User> deserialized = new ArrayList<User>();
+    public static List<user> readUserList() throws FileNotFoundException, IOException, ClassNotFoundException{
+        List <user> deserialized = new ArrayList<user>();
         try (ObjectInputStream ois = new ObjectInputStream(new FileInputStream("file.ser"))) {
-          deserialized = (List<User>) ois.readObject();
+          deserialized = (List<user>) ois.readObject();
           return deserialized;
         }
       }
