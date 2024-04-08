@@ -3,6 +3,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.Pane?>
 
 <Pane fx:id="remove" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/21" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Pagesfx.PhotosController">
@@ -10,13 +11,15 @@
       <ListView fx:id="photos" layoutX="153.0" layoutY="80.0" prefHeight="309.0" prefWidth="284.0" />
       <Label layoutX="276.0" layoutY="51.0" text="Photos" />
       <Button fx:id="add" layoutX="98.0" layoutY="80.0" mnemonicParsing="false" onAction="#add_photo" text="Add" />
-      <Button fx:id="rid" layoutX="450.0" layoutY="80.0" mnemonicParsing="false" text="Remove" />
-      <Button fx:id="rename" layoutX="450.0" layoutY="112.0" mnemonicParsing="false" text="Rename" />
+      <Button fx:id="rid" layoutX="450.0" layoutY="80.0" mnemonicParsing="false" onAction="#removePhoto" text="Remove" />
+      <Button fx:id="recaption" layoutX="471.0" layoutY="222.0" mnemonicParsing="false" onAction="#changeCaption" text="Re-caption" />
       <Label fx:id="albumName" layoutX="281.0" layoutY="14.0" text="Label" />
       <Button fx:id="logout" layoutX="14.0" layoutY="10.0" mnemonicParsing="false" onAction="#Logout" text="Logout" />
       <Button fx:id="quit" layoutX="547.0" layoutY="10.0" mnemonicParsing="false" onAction="#Quit" text="Quit" />
       <Button fx:id="back" layoutX="14.0" layoutY="47.0" mnemonicParsing="false" onAction="#Back" text="Back" />
-      <Button layoutX="86.0" layoutY="112.0" mnemonicParsing="false" text="Add Tag" />
+      <Button fx:id="edit" layoutX="81.0" layoutY="112.0" mnemonicParsing="false" onAction="#editTags" text="Tag Editor" />
       <Button fx:id="slide" layoutX="35.0" layoutY="222.0" mnemonicParsing="false" onAction="#openSlideshow" text="Open Slideshow" />
+      <Button fx:id="disp" layoutX="442.0" layoutY="112.0" mnemonicParsing="false" onAction="#displayPic" text="Display Image" />
+      <TextField fx:id="newName" layoutX="442.0" layoutY="247.0" prefHeight="25.0" prefWidth="133.0" />
    </children>
 </Pane>

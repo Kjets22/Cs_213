@@ -22,5 +22,7 @@
       <Button fx:id="delete" layoutX="464.0" layoutY="100.0" mnemonicParsing="false" onAction="#deleteAlbum" text="Delete" />
       <Button fx:id="open" layoutX="447.0" layoutY="168.0" mnemonicParsing="false" onAction="#openAlbum" text="Open Album" />
       <ListView fx:id="list" layoutX="200.0" layoutY="100.0" prefHeight="200.0" prefWidth="200.0" />
+      <Button layoutX="73.0" layoutY="188.0" mnemonicParsing="false" onAction="#rename" text="Change Name" />
+      <TextField fx:id="newName" layoutX="45.0" layoutY="213.0" />
    </children>
 </Pane>

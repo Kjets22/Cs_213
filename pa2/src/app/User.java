@@ -7,6 +7,7 @@ import java.util.List;
  * user
  */
 public class user implements Serializable {
+  private static final long serialVersionUID = 1L;
   private String username;
   private List<album> albums = new ArrayList<>();
   public user (String username){

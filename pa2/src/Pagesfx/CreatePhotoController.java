@@ -10,7 +10,10 @@ import java.util.ArrayList;
 import java.util.List;
 
 import java.util.Calendar;
+
+import app.album;
 import app.photo;
+import app.tag;
 import app.user;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
@@ -32,8 +35,10 @@ public class CreatePhotoController {
 
     List <user> users = new ArrayList<user>();
     List <photo> photos;
+    List<tag> tags = new ArrayList<tag>();
 
     user currentUser;
+    album currentAlbum;
     String currentAlbumName;
 
     public void start() throws FileNotFoundException, ClassNotFoundException, IOException{
@@ -49,8 +54,11 @@ public class CreatePhotoController {
             if(users.get(i).get_username().equals(currentUser.get_username())){
                 for(int j = 0; j < users.get(i).get_albums().size(); j++){
                     if(users.get(i).get_albums().get(j).get_name().equals(currentAlbumName)){
-                        photo add = new photo(loc.getText(), Calendar.getInstance(), null, i);
+                        List <tag> tags = new ArrayList<>();
+                        photo add = new photo(loc.getText(), Calendar.getInstance());
+                        add.add_album(currentAlbum);
                         add.change_capation(caption.getText().trim());
+                        add.setTags(tags);
                         users.get(i).get_albums().get(j).add_photo(add);
                         loc.clear();
                         caption.clear();

@@ -5,7 +5,6 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import app.album;
 import javafx.application.Platform;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -19,7 +18,6 @@ import javafx.scene.control.ListCell;
 import javafx.scene.control.ListView;
 import javafx.scene.image.Image;
 import javafx.stage.Stage;
-import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 
 public class StockAlbumsController {
@@ -35,10 +33,8 @@ public class StockAlbumsController {
         stock = ("stock");
         List <String> albums = new ArrayList<>();
         albums.add(stock);
-        obsList = FXCollections.observableArrayList(albums);
+        obsList = FXCollections.observableArrayList(albums);  
         list.setItems(obsList);
-        
-       
         list.setCellFactory(param -> new ListCell<String>() {
             private ImageView imageView = new ImageView();
             @Override
@@ -64,7 +60,7 @@ public class StockAlbumsController {
         Parent root = loader.load();
         Stage window = (Stage) openStock.getScene().getWindow();
         window.setScene(new Scene(root, 600, 400));
-        PhotosController Controller = loader.getController();
+        StockController Controller = loader.getController();
         Controller.start();
     }
 

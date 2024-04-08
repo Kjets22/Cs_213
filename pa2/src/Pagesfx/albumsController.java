@@ -9,6 +9,8 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListCell;
@@ -30,7 +32,7 @@ public class albumsController {
     @FXML Label username, pop;
     @FXML Button quit, createAlbum, logout, delete, open;
     @FXML ListView <String> list = new ListView<>();
-    @FXML TextField newAlbum;
+    @FXML TextField newAlbum, newName;
     
     List <user> users = new ArrayList<user>();
     ObservableList<String> obsList;
@@ -61,7 +63,6 @@ public class albumsController {
 
     public void start() throws IOException, ClassNotFoundException{
         currentUser = loginController.getCurrentUser();
-        System.out.println(currentUser.get_username());
         users = readUserList();
         albums = getAlbumNames(currentUser, albums);
         username.setText(loginController.getCurrentUsername());
@@ -91,6 +92,24 @@ public class albumsController {
     public void update() throws IOException, ClassNotFoundException{
         ObservableList <String> usersList = FXCollections.observableArrayList(albums);
         list.setItems(usersList);
+
+        list.setCellFactory(param -> new ListCell<String>() {
+            private ImageView imageView = new ImageView();
+            @Override
+            public void updateItem(String name, boolean empty) {
+                super.updateItem(name, empty);
+                if (empty) {
+                    setText(null);
+                    setGraphic(null);
+                } else {
+                    imageView.setImage(IMAGE_FOLDER);
+                    imageView.setFitHeight(30);
+                    imageView.setFitWidth(30);
+                    setText(name);
+                    setGraphic(imageView);
+                }
+            }
+        });
     }
    
 
@@ -134,6 +153,22 @@ public class albumsController {
         }
            
     }
+
+    public void rename(ActionEvent event) throws ClassNotFoundException, IOException{
+        int index = searchAlbums(list.getSelectionModel().getSelectedItem());
+        for(int i = 0; i < users.size(); i++){
+            if(users.get(i).get_username().equals(currentUser.get_username())){
+                users.get(i).get_albums().get(index).set_name(newName.getText());
+                newName.clear();
+                update();
+                Alert alert = new Alert(AlertType.INFORMATION);
+			        alert.setHeaderText("NAME CHANGED");
+			        alert.setContentText("Log out then back in to see name change");
+	                alert.show();
+            }
+            }
+               
+        }
 
    public int searchAlbums(String name){
     for(int i = 0; i < albums.size(); i++){

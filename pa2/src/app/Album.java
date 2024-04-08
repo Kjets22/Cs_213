@@ -23,8 +23,12 @@ public class album extends user{
     return photos;
   }
 
+  public void set_name(String title){
+    name = title;
+  }
+
   public void add_photo(String location, Calendar date, List<tag> tags){
-    photos.add(new photo(location,date,tags,photo_number));
+    photos.add(new photo(location,date));
     photo_number++;
   }
   public void add_photo(photo photo){
@@ -46,9 +50,7 @@ public class album extends user{
     findphoto_action(photo_Id,photo->photo.change_capation(caption)); 
   }  
 
-  void add_tag(int photo_Id,String name,String value){
-    findphoto_action(photo_Id,photo->photo.add_tag(name,value));
-  }
+
 
   void delete_tag(int photo_Id,String name, String value){
     findphoto_action(photo_Id,photo->photo.delete_tag(name,value));
