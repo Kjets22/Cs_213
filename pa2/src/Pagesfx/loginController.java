@@ -42,6 +42,15 @@ public class loginController {
             AdminController Controller = loader.getController();
             Controller.start();
         }
+        else if (username.getText().equals("stock")){
+            FXMLLoader loader = new FXMLLoader();
+            loader.setLocation(getClass().getResource("StockAlbum.fxml"));
+            Parent root = loader.load();
+            Stage window = (Stage) username.getScene().getWindow();
+            window.setScene(new Scene(root, 600, 400));
+            StockAlbumsController Controller = loader.getController();
+            Controller.start();
+        }
         else {
             int k = 0;
             users = readUserList();

@@ -19,8 +19,6 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.control.Alert;
-import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
@@ -48,7 +46,7 @@ public class PhotosController {
         albumName.setText("Photos in " + currentAlbum.get_name());
         pictures = getPhotoNames(currentAlbum);
         obsList = FXCollections.observableArrayList(pictures);
-        photos.setItems(obsList);
+        
 
         photos.setCellFactory(param -> new ListCell<String>() {
           private ImageView imageView = new ImageView();
@@ -72,6 +70,8 @@ public class PhotosController {
             }
           }
       });
+
+      photos.setItems(obsList);
     }
     
 
@@ -104,10 +104,22 @@ public class PhotosController {
 
   
 
-
+    public void openSlideshow(ActionEvent event) throws IOException{
+      FXMLLoader loader = new FXMLLoader();
+      loader.setLocation(getClass().getResource("Slideshow.fxml"));
+      Parent root = loader.load();
+      Stage window = (Stage) add.getScene().getWindow();
+      window.setScene(new Scene(root, 600, 400));
+      SlideshowController controller = loader.getController();
+      controller.start();
+    }
 
     public static String getCurrentAlbumName(){
       return currentAlbum.get_name();
+    }
+
+    public static album getCurrentAlbum(){
+      return currentAlbum;
     }
 
     public void Back(ActionEvent event) throws IOException, ClassNotFoundException{

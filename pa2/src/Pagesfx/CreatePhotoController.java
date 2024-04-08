@@ -10,7 +10,6 @@ import java.util.ArrayList;
 import java.util.List;
 
 import java.util.Calendar;
-import app.album;
 import app.photo;
 import app.user;
 import javafx.application.Platform;
@@ -19,6 +18,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
@@ -53,6 +54,10 @@ public class CreatePhotoController {
                         users.get(i).get_albums().get(j).add_photo(add);
                         loc.clear();
                         caption.clear();
+                        Alert alert = new Alert(AlertType.CONFIRMATION);
+			            alert.setHeaderText("PHOTO ADDED");
+			            alert.setContentText("You have succesfully added a photo to " + currentAlbumName);
+			            alert.show();
                     }
                 }
             }
